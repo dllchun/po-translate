@@ -36,9 +36,11 @@ goto :eof
 :handle_error
 echo %RED%Error: %~1%NC%
 call :cleanup
-pause
+echo Press any key to exit...
+pause >nul
 exit /b 1
 
+:: Main script starts here
 echo ======================================
 echo %GREEN%PO File Translation Setup Script%NC%
 echo ======================================
@@ -52,7 +54,8 @@ python --version > nul 2>&1
 if errorlevel 1 (
     echo %RED%Error: Python is not installed. Please install Python first.%NC%
     echo Visit: https://www.python.org/downloads/
-    pause
+    echo Press any key to exit...
+    pause >nul
     exit /b 1
 )
 
@@ -146,4 +149,7 @@ if "%choice%"=="4" (
 echo.
 echo %RED%Invalid choice. Please try again.%NC%
 echo.
-goto MENU 
+goto MENU
+
+:: Final pause to prevent window from closing
+pause >nul 

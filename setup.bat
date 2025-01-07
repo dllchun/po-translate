@@ -12,6 +12,34 @@ echo %GREEN%PO File Translation Setup Script%NC%
 echo ======================================
 echo.
 
+:: Automatic cleanup at start
+echo %YELLOW%Performing automatic cleanup...%NC%
+
+:: Deactivate virtual environment if active
+if defined VIRTUAL_ENV (
+    echo Deactivating virtual environment...
+    call deactivate 2>nul
+)
+
+:: Remove existing virtual environment
+if exist venv (
+    echo Removing existing virtual environment...
+    rmdir /s /q venv 2>nul
+)
+
+:: Remove Python cache files
+if exist __pycache__ (
+    echo Removing Python cache files...
+    rmdir /s /q __pycache__ 2>nul
+)
+
+:: Remove .pyc files
+echo Removing temporary Python files...
+del /s /q *.pyc 2>nul
+
+echo %GREEN%Cleanup completed.%NC%
+echo.
+
 :: Check if Python is installed
 python --version > nul 2>&1
 if errorlevel 1 (
@@ -21,28 +49,46 @@ if errorlevel 1 (
     exit /b 1
 )
 
-:: Check if virtual environment exists and remove if it does
-if exist venv (
-    echo %YELLOW%Warning: Existing virtual environment found. Removing...%NC%
-    rmdir /s /q venv
-)
-
-:: Create virtual environment
+:: Create virtual environment with error handling
 echo %GREEN%Creating virtual environment...%NC%
 python -m venv venv
-
-:: Check if venv creation was successful
-if not exist venv (
-    echo %RED%Error: Failed to create virtual environment.%NC%
+if errorlevel 1 (
+    echo %RED%Error: Failed to create virtual environment. Please check Python installation.%NC%
     pause
     exit /b 1
 )
 
-:: Activate virtual environment and install packages
+:: Check if venv creation was successful
+if not exist venv (
+    echo %RED%Error: Failed to create virtual environment directory.%NC%
+    pause
+    exit /b 1
+)
+
+:: Activate virtual environment and install packages with error handling
 echo %GREEN%Activating virtual environment and installing packages...%NC%
 call venv\Scripts\activate.bat
+if errorlevel 1 (
+    echo %RED%Error: Failed to activate virtual environment.%NC%
+    pause
+    exit /b 1
+)
+
+:: Upgrade pip with error handling
 python -m pip install --upgrade pip
+if errorlevel 1 (
+    echo %RED%Error: Failed to upgrade pip.%NC%
+    pause
+    exit /b 1
+)
+
+:: Install requirements with error handling
 pip install -r requirements.txt
+if errorlevel 1 (
+    echo %RED%Error: Failed to install requirements.%NC%
+    pause
+    exit /b 1
+)
 
 :: Create .env file if it doesn't exist
 if not exist .env (
@@ -51,15 +97,15 @@ if not exist .env (
     echo %YELLOW%Warning: Please update the DEEPSEEK_API_KEY in .env file with your actual API key%NC%
 )
 
-:: Create directories
+:: Create directories with error handling
 echo %GREEN%Creating required directories...%NC%
-if not exist source mkdir source
-if not exist output mkdir output
+mkdir source 2>nul
+mkdir output 2>nul
 
-:: Move any PO files to source directory if they exist in current directory
+:: Move any PO files to source directory if they exist
 if exist *.po (
     echo %GREEN%Moving PO files to source directory...%NC%
-    move *.po source\ > nul 2>&1
+    move *.po source\ 2>nul
 )
 
 echo.
@@ -88,9 +134,10 @@ echo.
 echo %GREEN%[1]%NC% Open source directory to add PO files
 echo %GREEN%[2]%NC% Edit .env file to set API key
 echo %GREEN%[3]%NC% Start translation (will activate venv)
-echo %GREEN%[4]%NC% Exit
+echo %GREEN%[4]%NC% Clean up (remove venv and temporary files)
+echo %GREEN%[5]%NC% Exit
 echo.
-set /p choice="Enter your choice (1-4): "
+set /p choice="Enter your choice (1-5): "
 
 if "%choice%"=="1" (
     start explorer "source"
@@ -107,6 +154,27 @@ if "%choice%"=="3" (
     exit /b 0
 )
 if "%choice%"=="4" (
+    echo.
+    echo %YELLOW%Cleaning up...%NC%
+    :: Deactivate virtual environment if active
+    if defined VIRTUAL_ENV (
+        call deactivate
+    )
+    :: Remove virtual environment
+    if exist venv (
+        rmdir /s /q venv
+    )
+    :: Remove Python cache files
+    if exist __pycache__ (
+        rmdir /s /q __pycache__
+    )
+    :: Remove .pyc files
+    del /s /q *.pyc 2>nul
+    echo %GREEN%Cleanup completed! Run setup.bat again to reinstall.%NC%
+    pause
+    exit /b 0
+)
+if "%choice%"=="5" (
     echo.
     echo %GREEN%Setup complete! You can close this window.%NC%
     pause

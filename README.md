@@ -14,6 +14,7 @@ This tool translates PO (Portable Object) files from English to Traditional Chin
 - Skips already translated entries
 - Preserves original file names with '_zh' suffix
 - Cross-platform support (Windows, macOS, Linux)
+- Easy cleanup and maintenance
 
 ## Prerequisites
 
@@ -33,6 +34,7 @@ This tool translates PO (Portable Object) files from English to Traditional Chin
 ├── translate_po.py  # Main translation script
 ├── setup.sh        # Setup script for macOS/Linux
 ├── setup.bat       # Setup script for Windows
+├── cleanup.bat     # Cleanup script for Windows
 ├── requirements.txt # Python dependencies
 └── .env            # Environment file for API key
 ```
@@ -50,25 +52,30 @@ If not installed, download from [python.org](https://www.python.org/downloads/)
 setup.bat
 ```
 
-3. Update the API key in `.env` file:
-```
-DEEPSEEK_API_KEY='your_api_key_here'
-```
+3. Choose from the interactive menu:
+   - Open source directory to add PO files
+   - Edit API key in .env file
+   - Start translation
+   - Clean up temporary files
+   - Exit
 
-4. Place your PO files in the `source` directory:
-   - You can put any number of PO files
-   - Files can have any name with `.po` extension
-   - Original file structure will be preserved
+4. The script will guide you through the process and handle virtual environment activation automatically.
 
-5. Activate the virtual environment:
-```cmd
-venv\Scripts\activate.bat
-```
+## Cleanup Options
 
-6. Run the translation script:
-```cmd
-python translate_po.py
-```
+### Using the Interactive Menu
+1. Run `setup.bat`
+2. Choose option 4 (Clean up)
+3. The script will remove:
+   - Virtual environment (venv)
+   - Python cache files
+   - Temporary files
+
+### Using the Cleanup Script
+1. Run `cleanup.bat`
+2. Confirm when prompted
+3. The script will clean up all temporary files
+4. Run `setup.bat` again when you need to use the translator
 
 ## Quick Start (macOS/Linux)
 

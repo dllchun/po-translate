@@ -22,41 +22,50 @@ print_error() {
 # Error handling function
 handle_error() {
     print_error "$1"
+    cleanup
     exit 1
 }
+
+# Cleanup function
+cleanup() {
+    print_warning "Performing cleanup..."
+    
+    # Deactivate virtual environment if active
+    if [[ -n "${VIRTUAL_ENV}" ]]; then
+        echo "Deactivating virtual environment..."
+        deactivate 2>/dev/null || true
+    fi
+    
+    # Remove virtual environment
+    if [ -d "venv" ]; then
+        echo "Removing virtual environment..."
+        rm -rf venv
+    fi
+    
+    # Remove Python cache files
+    if [ -d "__pycache__" ]; then
+        echo "Removing Python cache files..."
+        rm -rf __pycache__
+    fi
+    
+    # Remove .pyc files
+    echo "Removing temporary Python files..."
+    find . -type f -name "*.pyc" -delete 2>/dev/null
+    
+    print_message "Cleanup completed."
+    echo
+}
+
+# Set up cleanup on script exit
+trap cleanup EXIT
 
 echo "======================================"
 print_message "PO File Translation Setup Script"
 echo "======================================"
 echo
 
-# Automatic cleanup at start
-print_warning "Performing automatic cleanup..."
-
-# Deactivate virtual environment if active
-if [[ -n "${VIRTUAL_ENV}" ]]; then
-    echo "Deactivating virtual environment..."
-    deactivate 2>/dev/null || true
-fi
-
-# Remove existing virtual environment
-if [ -d "venv" ]; then
-    echo "Removing existing virtual environment..."
-    rm -rf venv
-fi
-
-# Remove Python cache files
-if [ -d "__pycache__" ]; then
-    echo "Removing Python cache files..."
-    rm -rf __pycache__
-fi
-
-# Remove .pyc files
-echo "Removing temporary Python files..."
-find . -type f -name "*.pyc" -delete 2>/dev/null
-
-print_message "Cleanup completed."
-echo
+# Initial cleanup
+cleanup
 
 # Check if Python 3 is installed
 if ! command -v python3 &> /dev/null; then
@@ -117,7 +126,7 @@ echo "   python translate_po.py"
 echo
 print_message "Translated files will be saved in the 'output' directory"
 echo
-print_warning "Note: You need to activate the virtual environment each time you open a new terminal"
+print_warning "Note: Virtual environment will be cleaned up when you exit"
 echo "======================================"
 
 # Make the script executable

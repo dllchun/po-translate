@@ -7,38 +7,43 @@ set "YELLOW=[33m"
 set "RED=[31m"
 set "NC=[0m"
 
-echo ======================================
-echo %GREEN%PO File Translation Setup Script%NC%
-echo ======================================
-echo.
-
-:: Automatic cleanup at start
-echo %YELLOW%Performing automatic cleanup...%NC%
-
+:: Function to perform cleanup
+:cleanup
+echo %YELLOW%Performing cleanup...%NC%
 :: Deactivate virtual environment if active
 if defined VIRTUAL_ENV (
     echo Deactivating virtual environment...
     call deactivate 2>nul
 )
-
-:: Remove existing virtual environment
+:: Remove virtual environment
 if exist venv (
-    echo Removing existing virtual environment...
+    echo Removing virtual environment...
     rmdir /s /q venv 2>nul
 )
-
 :: Remove Python cache files
 if exist __pycache__ (
     echo Removing Python cache files...
     rmdir /s /q __pycache__ 2>nul
 )
-
 :: Remove .pyc files
 echo Removing temporary Python files...
 del /s /q *.pyc 2>nul
-
 echo %GREEN%Cleanup completed.%NC%
 echo.
+goto :eof
+
+:: Register cleanup on script exit
+set "script_dir=%~dp0"
+set "cleanup_cmd=call :cleanup"
+for /F "tokens=2 delims==" %%a in ('set') do if /I not "%%a"=="%cleanup_cmd%" set "%%a="
+
+echo ======================================
+echo %GREEN%PO File Translation Setup Script%NC%
+echo ======================================
+echo.
+
+:: Initial cleanup
+call :cleanup
 
 :: Check if Python is installed
 python --version > nul 2>&1
@@ -124,7 +129,7 @@ echo    python translate_po.py
 echo.
 echo %GREEN%Translated files will be saved in the 'output' directory%NC%
 echo.
-echo %YELLOW%Note: You need to activate the virtual environment each time you open a new command prompt%NC%
+echo %YELLOW%Note: Virtual environment will be cleaned up when you exit%NC%
 echo ======================================
 echo.
 
@@ -134,10 +139,9 @@ echo.
 echo %GREEN%[1]%NC% Open source directory to add PO files
 echo %GREEN%[2]%NC% Edit .env file to set API key
 echo %GREEN%[3]%NC% Start translation (will activate venv)
-echo %GREEN%[4]%NC% Clean up (remove venv and temporary files)
-echo %GREEN%[5]%NC% Exit
+echo %GREEN%[4]%NC% Exit
 echo.
-set /p choice="Enter your choice (1-5): "
+set /p choice="Enter your choice (1-4): "
 
 if "%choice%"=="1" (
     start explorer "source"
@@ -150,33 +154,14 @@ if "%choice%"=="2" (
 if "%choice%"=="3" (
     call venv\Scripts\activate.bat
     python translate_po.py
+    call :cleanup
     pause
     exit /b 0
 )
 if "%choice%"=="4" (
     echo.
-    echo %YELLOW%Cleaning up...%NC%
-    :: Deactivate virtual environment if active
-    if defined VIRTUAL_ENV (
-        call deactivate
-    )
-    :: Remove virtual environment
-    if exist venv (
-        rmdir /s /q venv
-    )
-    :: Remove Python cache files
-    if exist __pycache__ (
-        rmdir /s /q __pycache__
-    )
-    :: Remove .pyc files
-    del /s /q *.pyc 2>nul
-    echo %GREEN%Cleanup completed! Run setup.bat again to reinstall.%NC%
-    pause
-    exit /b 0
-)
-if "%choice%"=="5" (
-    echo.
-    echo %GREEN%Setup complete! You can close this window.%NC%
+    echo %GREEN%Cleaning up and exiting...%NC%
+    call :cleanup
     pause
     exit /b 0
 )

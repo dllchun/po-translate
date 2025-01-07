@@ -80,5 +80,40 @@ echo %GREEN%Translated files will be saved in the 'output' directory%NC%
 echo.
 echo %YELLOW%Note: You need to activate the virtual environment each time you open a new command prompt%NC%
 echo ======================================
+echo.
 
-pause 
+:PROMPT
+echo What would you like to do next?
+echo.
+echo %GREEN%[1]%NC% Open source directory to add PO files
+echo %GREEN%[2]%NC% Edit .env file to set API key
+echo %GREEN%[3]%NC% Start translation (will activate venv)
+echo %GREEN%[4]%NC% Exit
+echo.
+set /p choice="Enter your choice (1-4): "
+
+if "%choice%"=="1" (
+    start explorer "source"
+    goto PROMPT
+)
+if "%choice%"=="2" (
+    notepad .env
+    goto PROMPT
+)
+if "%choice%"=="3" (
+    call venv\Scripts\activate.bat
+    python translate_po.py
+    pause
+    exit /b 0
+)
+if "%choice%"=="4" (
+    echo.
+    echo %GREEN%Setup complete! You can close this window.%NC%
+    pause
+    exit /b 0
+)
+
+echo.
+echo %RED%Invalid choice. Please try again.%NC%
+echo.
+goto PROMPT 

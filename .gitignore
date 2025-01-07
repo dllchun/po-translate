@@ -16,5 +16,4 @@ __pycache__/
 .idea/
 
 # Generated files
-output/
 *_zh.po 

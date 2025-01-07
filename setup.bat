@@ -7,47 +7,10 @@ set "YELLOW=[33m"
 set "RED=[31m"
 set "NC=[0m"
 
-:: Function to perform cleanup
-:cleanup
-echo %YELLOW%Performing cleanup...%NC%
-:: Deactivate virtual environment if active
-if defined VIRTUAL_ENV (
-    echo Deactivating virtual environment...
-    call deactivate 2>nul
-)
-:: Remove virtual environment
-if exist venv (
-    echo Removing virtual environment...
-    rmdir /s /q venv 2>nul
-)
-:: Remove Python cache files
-if exist __pycache__ (
-    echo Removing Python cache files...
-    rmdir /s /q __pycache__ 2>nul
-)
-:: Remove .pyc files
-echo Removing temporary Python files...
-del /s /q *.pyc 2>nul
-echo %GREEN%Cleanup completed.%NC%
-echo.
-goto :eof
-
-:: Error handling function
-:handle_error
-echo %RED%Error: %~1%NC%
-call :cleanup
-echo Press any key to exit...
-pause >nul
-exit /b 1
-
-:: Main script starts here
 echo ======================================
 echo %GREEN%PO File Translation Setup Script%NC%
 echo ======================================
 echo.
-
-:: Initial cleanup
-call :cleanup
 
 :: Check if Python is installed
 python --version > nul 2>&1
@@ -59,24 +22,51 @@ if errorlevel 1 (
     exit /b 1
 )
 
-:: Create virtual environment with error handling
+:: Create virtual environment
 echo %GREEN%Creating virtual environment...%NC%
-python -m venv venv || call :handle_error "Failed to create virtual environment. Please check Python installation."
+python -m venv venv
+if errorlevel 1 (
+    echo %RED%Error: Failed to create virtual environment. Please check Python installation.%NC%
+    echo Press any key to exit...
+    pause >nul
+    exit /b 1
+)
 
 :: Check if venv creation was successful
 if not exist venv (
-    call :handle_error "Failed to create virtual environment directory."
+    echo %RED%Error: Failed to create virtual environment directory.%NC%
+    echo Press any key to exit...
+    pause >nul
+    exit /b 1
 )
 
-:: Activate virtual environment and install packages with error handling
+:: Activate virtual environment and install packages
 echo %GREEN%Activating virtual environment and installing packages...%NC%
-call venv\Scripts\activate.bat || call :handle_error "Failed to activate virtual environment."
+call venv\Scripts\activate.bat
+if errorlevel 1 (
+    echo %RED%Error: Failed to activate virtual environment.%NC%
+    echo Press any key to exit...
+    pause >nul
+    exit /b 1
+)
 
-:: Upgrade pip with error handling
-python -m pip install --upgrade pip || call :handle_error "Failed to upgrade pip."
+:: Upgrade pip
+python -m pip install --upgrade pip
+if errorlevel 1 (
+    echo %RED%Error: Failed to upgrade pip.%NC%
+    echo Press any key to exit...
+    pause >nul
+    exit /b 1
+)
 
-:: Install requirements with error handling
-pip install -r requirements.txt || call :handle_error "Failed to install requirements."
+:: Install requirements
+pip install -r requirements.txt
+if errorlevel 1 (
+    echo %RED%Error: Failed to install requirements.%NC%
+    echo Press any key to exit...
+    pause >nul
+    exit /b 1
+)
 
 :: Create .env file if it doesn't exist
 if not exist .env (
@@ -85,7 +75,7 @@ if not exist .env (
     echo %YELLOW%Warning: Please update the DEEPSEEK_API_KEY in .env file with your actual API key%NC%
 )
 
-:: Create directories with error handling
+:: Create directories
 echo %GREEN%Creating required directories...%NC%
 mkdir source 2>nul
 mkdir output 2>nul
@@ -124,14 +114,12 @@ if "%choice%"=="2" (
 )
 if "%choice%"=="3" (
     echo %GREEN%Starting translation...%NC%
-    call venv\Scripts\activate.bat
     python translate_po.py
     if errorlevel 1 (
         echo %RED%Translation failed.%NC%
     ) else (
         echo %GREEN%Translation completed successfully.%NC%
     )
-    call :cleanup
     echo.
     echo Press any key to return to menu...
     pause >nul
@@ -139,8 +127,7 @@ if "%choice%"=="3" (
 )
 if "%choice%"=="4" (
     echo.
-    echo %GREEN%Cleaning up and exiting...%NC%
-    call :cleanup
+    echo %GREEN%Exiting...%NC%
     echo Press any key to exit...
     pause >nul
     exit /b 0

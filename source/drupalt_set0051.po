@@ -1,0 +1,642 @@
+msgid "Ansible"
+msgstr ""
+
+msgid "AXEPTA e-POSitivity Payment Gateways"
+msgstr ""
+
+msgid "Campaign Monitor Webform Handler"
+msgstr ""
+
+msgid "Commerce Webform Order"
+msgstr ""
+
+msgid "ConvertKit - The Creator Marketing Platform"
+msgstr ""
+
+msgid "CMRF Form Processor"
+msgstr ""
+
+msgid "CMRF Reference"
+msgstr ""
+
+msgid "Discord Webform Handler"
+msgstr ""
+
+msgid "Domain Webform"
+msgstr ""
+
+msgid "Drip Webform Handler"
+msgstr ""
+
+msgid "Druminate Webforms"
+msgstr ""
+
+msgid "Ecomail webform"
+msgstr ""
+
+msgid "Flashpoint Course Content: Webform"
+msgstr ""
+
+msgid "Gatsby Drupal Webform"
+msgstr ""
+
+msgid "GitLab API with Library"
+msgstr ""
+
+msgid "(Google) Datalayer Webform"
+msgstr ""
+
+msgid "Group Webform"
+msgstr ""
+
+msgid "GraphQL Webform"
+msgstr ""
+
+msgid "Headless Ninja React Webform"
+msgstr ""
+
+msgid "ID.me Webform Integration"
+msgstr ""
+
+msgid "Janrain Identity Cloud"
+msgstr ""
+
+msgid "Live Search - Person"
+msgstr ""
+
+msgid "Mailchimp Webform Handler"
+msgstr ""
+
+msgid "Marketo MA Webform"
+msgstr ""
+
+msgid "Maropost Subscription Webform Handler"
+msgstr ""
+
+msgid "Micro Webform"
+msgstr ""
+
+msgid "Mollie for Drupal"
+msgstr ""
+
+msgid "Mollie Webform Delete Submission"
+msgstr ""
+
+msgid "Moosend: Email Marketing Software"
+msgstr ""
+
+msgid "OpenInbound for Drupal"
+msgstr ""
+
+msgid "OpenLayersD8"
+msgstr ""
+
+msgid "Webform Postcode API"
+msgstr ""
+
+msgid "Rules Webform"
+msgstr ""
+
+msgid "Sendinblue: Digital Marketing Tool"
+msgstr ""
+
+msgid "Sendpulse: Online Marketing"
+msgstr ""
+
+msgid "Sharpspring Webforms"
+msgstr ""
+
+msgid "Sherpa Webform"
+msgstr ""
+
+msgid "Site Studio Webform"
+msgstr ""
+
+msgid "Slack Webform Handler"
+msgstr ""
+
+msgid "Streak Connect"
+msgstr ""
+
+msgid "Stripe Webform Payment"
+msgstr ""
+
+msgid "Vipps Recurring Payments"
+msgstr ""
+
+msgid "Watson/Silverpop Webform Parser"
+msgstr ""
+
+msgid "Webform AddressFinder"
+msgstr ""
+
+msgid "Webform API Handler"
+msgstr ""
+
+msgid "Webform Authorize.Net"
+msgstr ""
+
+msgid "Webform Copper"
+msgstr ""
+
+msgid "Webform Entity Builder"
+msgstr ""
+
+msgid "Webform E-petition"
+msgstr ""
+
+msgid "Webform Cart"
+msgstr ""
+
+msgid "Webform Donate"
+msgstr ""
+
+msgid "Webform Eloqua"
+msgstr ""
+
+msgid "Webform GoogleSheets"
+msgstr ""
+
+msgid "Webform Group"
+msgstr ""
+
+msgid "Webform Group Extended"
+msgstr ""
+
+msgid "Webform HubSpot"
+msgstr ""
+
+msgid "Webform Hubspot Integration"
+msgstr ""
+
+msgid "Webform Jira Integration"
+msgstr ""
+
+msgid "Webform JIRA service desk integration"
+msgstr ""
+
+msgid "LDbase Webform Handlers"
+msgstr ""
+
+msgid "Lightweight Webform Mailchimp"
+msgstr ""
+
+msgid "Webform MailChimp"
+msgstr ""
+
+msgid "Webform Mattermost"
+msgstr ""
+
+msgid "Webform Mautic"
+msgstr ""
+
+msgid "Webform MyEmma"
+msgstr ""
+
+msgid "Webform Newsletter2Go"
+msgstr ""
+
+msgid "OS Tickets Webform Handler"
+msgstr ""
+
+msgid "Webform Pardot"
+msgstr ""
+
+msgid "Webform Product"
+msgstr ""
+
+msgid "Webform SendGrid"
+msgstr ""
+
+msgid "Webform Simplenews Handler"
+msgstr ""
+
+msgid "Webform Stripe"
+msgstr ""
+
+msgid "Webform SugarCRM Integration"
+msgstr ""
+
+msgid "Webform to Paypal"
+msgstr ""
+
+msgid "Webform Paypal Standard Checkout"
+msgstr ""
+
+msgid "Webform Paypal (Smart Buttons)"
+msgstr ""
+
+msgid "Webform User Registration"
+msgstr ""
+
+msgid "Zammad Webform Handler"
+msgstr ""
+
+msgid "Webform Zendesk"
+msgstr ""
+
+msgid "Salesforce Web-to-Lead Webform Data Integration"
+msgstr ""
+
+msgid "Salesforce Marketing Cloud API Integration"
+msgstr ""
+
+msgid "SalesForce Web2Lead Webform Handler"
+msgstr ""
+
+msgid "Salesforce: Webform to Salesforce Leads"
+msgstr ""
+
+msgid "Salesforce: Webform to Salesforce DEManager"
+msgstr ""
+
+msgid "Integrations"
+msgstr ""
+
+msgid "Mail System"
+msgstr ""
+
+msgid "Webform Email Confirmation Link"
+msgstr ""
+
+msgid "Webform Email Reply"
+msgstr ""
+
+msgid "Flexmail"
+msgstr ""
+
+msgid "Mailboxlayer"
+msgstr ""
+
+msgid "SendGrid Integration <em>(requires Mail System)</em>"
+msgstr ""
+
+msgid "Queue Mail"
+msgstr ""
+
+msgid "Webform Send Draft Link"
+msgstr ""
+
+msgid "SMTP Authentication Support"
+msgstr ""
+
+msgid "Swift Mailer <em>(requires Mail System)</em>"
+msgstr ""
+
+msgid "Webform Entity Email"
+msgstr ""
+
+msgid "Webform Embed"
+msgstr ""
+
+msgid "Webform Mass Email"
+msgstr ""
+
+msgid "Webform Send Multiple Emails"
+msgstr ""
+
+msgid "Webform Migrate"
+msgstr ""
+
+msgid "Lingotek Translation."
+msgstr ""
+
+msgid "Webform Translation Permissions"
+msgstr ""
+
+msgid "SPAM Protection"
+msgstr ""
+
+msgid "Webform Analysis"
+msgstr ""
+
+msgid "Webform Query"
+msgstr ""
+
+msgid "Webform Views"
+msgstr ""
+
+msgid "Webform Submission Views Token Field"
+msgstr ""
+
+msgid "Webform Anonymous Submission"
+msgstr ""
+
+msgid "Webform Anonymizer"
+msgstr ""
+
+msgid "Webform Auto Exports"
+msgstr ""
+
+msgid "Webform Better Results"
+msgstr ""
+
+msgid "Webform double opt-in"
+msgstr ""
+
+msgid "Webform Eager Purge"
+msgstr ""
+
+msgid "Webform Invitation"
+msgstr ""
+
+msgid "Webform Permissions By Term"
+msgstr ""
+
+msgid "Webform Queue"
+msgstr ""
+
+msgid "Webform Resend Submissions"
+msgstr ""
+
+msgid "Webform Sanitize"
+msgstr ""
+
+msgid "Webform Scheduled Tasks"
+msgstr ""
+
+msgid "Webform Submission Anonymisation"
+msgstr ""
+
+msgid "Webform Submission Change History"
+msgstr ""
+
+msgid "Webform Submission Control"
+msgstr ""
+
+msgid "Webform Submissions Delete"
+msgstr ""
+
+msgid "Timely Webform Reporting"
+msgstr ""
+
+msgid "Webform Submissions Notification"
+msgstr ""
+
+msgid "Webform Submission Files Download"
+msgstr ""
+
+msgid "Webform Submission Splitter"
+msgstr ""
+
+msgid "Webform Views Extras"
+msgstr ""
+
+msgid "Webform XLSX Export"
+msgstr ""
+
+msgid "Yet another statistics module"
+msgstr ""
+
+msgid "Clientside Validation"
+msgstr ""
+
+msgid "Advanced Email Validation"
+msgstr ""
+
+msgid "Telephone Validation"
+msgstr ""
+
+msgid "Validators"
+msgstr ""
+
+msgid "Webform Handler: Compare Fields"
+msgstr ""
+
+msgid "Webform Media Type"
+msgstr ""
+
+msgid "Calendar Links Token"
+msgstr ""
+
+msgid "Googalytics Webform"
+msgstr ""
+
+msgid "General Data Protection Regulation Compliance"
+msgstr ""
+
+msgid "EU Cookie Compliance"
+msgstr ""
+
+msgid "Formdazzle!"
+msgstr ""
+
+msgid "Webform Encrypt"
+msgstr ""
+
+msgid "Webform Ip Track"
+msgstr ""
+
+msgid "Utility"
+msgstr ""
+
+msgid "Decoupled Kit"
+msgstr ""
+
+msgid "Webform REST"
+msgstr ""
+
+msgid "Webform JSON:API"
+msgstr ""
+
+msgid "Webform JSON Schema"
+msgstr ""
+
+msgid "Config Entity Revisions"
+msgstr ""
+
+msgid "Maestro Workflow Engine"
+msgstr ""
+
+msgid "Workflows Field"
+msgstr ""
+
+msgid "Webform Workflows Element"
+msgstr ""
+
+msgid "Webform Revision UI"
+msgstr ""
+
+msgid "Maillog / Mail Developer"
+msgstr ""
+
+msgid "Webform Submissions List Decorator"
+msgstr ""
+
+msgid "No add-ons found. Try a different search."
+msgstr ""
+
+msgid "Webforms: Add-ons"
+msgstr ""
+
+msgid ""
+"The <strong>Add-ons</strong> page lists Drupal modules and projects "
+"that extend and provide additional functionality to the Webform module "
+"and Drupal's Form API.  If you would like a module or project to be "
+"included in the below list, please submit a request to the <a "
+"href=\":href\">Webform module's issue queue</a>."
+msgstr ""
+
+msgid "Add @title"
+msgstr ""
+
+msgid "@count reference"
+msgid_plural "@count references"
+msgstr[0] ""
+
+msgid "Node status"
+msgstr ""
+
+msgid "Webform status"
+msgstr ""
+
+msgid "There are no webform node references."
+msgstr ""
+
+msgid ""
+"The <strong>Reference</strong> pages displays an overview of a "
+"webform's references and allows you to quickly create new references "
+"(a.k.a Webform nodes)."
+msgstr ""
+
+msgid "You are editing the original %language language for this webform."
+msgstr ""
+
+msgid "Duplicate '@label' form"
+msgstr ""
+
+msgid "@title does not meet the requirements."
+msgstr ""
+
+msgid "Remove configuration"
+msgstr ""
+
+msgid "Delete all related submissions"
+msgstr ""
+
+msgid "Affect any fields or nodes which reference this webform"
+msgstr ""
+
+msgid "Yes, I want to delete the %label @entity-type"
+msgstr ""
+
+msgid "Delete '@label' @entity-type?"
+msgstr ""
+
+msgid "Mobile Number"
+msgstr ""
+
+msgid "The value of the webform element."
+msgstr ""
+
+msgid "Enable advanced UI"
+msgstr ""
+
+msgid ""
+"If checked, users creating new media items in the media library will "
+"see a summary of their selected media items, and they will be able to "
+"insert their selection directly into the media field or text editor."
+msgstr ""
+
+msgid ""
+"It is potentially insecure to display oEmbed content in a frame that "
+"is served from the same domain as your main Drupal site, as this may "
+"allow execution of third-party code. Refer to <a "
+"href=\"https://oembed.com/#section3\">oEmbed Security "
+"Considerations</a>."
+msgstr ""
+
+msgid ""
+"Displaying media assets from third-party services, such as YouTube or "
+"Twitter, can be risky. This is because many of these services return "
+"arbitrary HTML to represent those assets, and that HTML may contain "
+"executable JavaScript code. If handled improperly, this can increase "
+"the risk of your site being compromised."
+msgstr ""
+
+msgid ""
+"In order to mitigate the risks, third-party assets are displayed in an "
+"iFrame, which effectively sandboxes any executable code running inside "
+"it. For even more security, the iFrame can be served from an alternate "
+"domain (that also points to your Drupal site), which you can configure "
+"on this page. This helps safeguard cookies and other sensitive "
+"information."
+msgstr ""
+
+msgid "iFrame domain"
+msgstr ""
+
+msgid "@title does not contain a valid url."
+msgstr ""
+
+msgid ""
+"Enter a different domain from which to serve oEmbed content, including "
+"the <em>http://</em> or <em>https://</em> prefix. This domain needs to "
+"point back to this site, or existing oEmbed content may not display "
+"correctly, or at all."
+msgstr ""
+
+msgid "Standalone media URL"
+msgstr ""
+
+msgid "Allow users to access @media-entities at /media/{id}."
+msgstr ""
+
+msgid "media items"
+msgstr ""
+
+msgid "Inherits meta tags from: @inherits"
+msgstr ""
+
+msgid ""
+"Configure global meta tag default values below. Meta tags may be left "
+"as the default."
+msgstr ""
+
+msgid ""
+"Meta tag patterns are passed down from one level to the next unless "
+"they are overridden. To view a summary of the individual meta tags and "
+"the pattern for a specific configuration, click on its name below."
+msgstr ""
+
+msgid ""
+"If the top-level configuration is not specific enough, additional "
+"default meta tag configurations can be added for a specific entity "
+"type or entity bundle, e.g. for a specific content type."
+msgstr ""
+
+msgid ""
+"Meta tags can be further refined on a per-entity basis, e.g. for "
+"individual nodes, by adding the \"Metatag\" field to that entity type "
+"through its normal field settings pages."
+msgstr ""
+
+msgid "Add default meta tags"
+msgstr ""
+
+msgid "URL Redirects"
+msgstr ""
+
+msgid "Sitemap ID"
+msgstr ""
+
+msgid "Rebuild"
+msgstr ""
+
+msgid "Sitemap Entities"
+msgstr ""
+
+msgid "Add XML Sitemap"
+msgstr ""
+
+msgid "Custom sitemap entities settings"
+msgstr ""
+
+msgid "Sitemap settings"
+msgstr ""
+
+msgid "Custom Entities Settings"
+msgstr ""
+
+msgid "@module (<span class=\"admin-missing\">disabled</span>)"
+msgstr ""

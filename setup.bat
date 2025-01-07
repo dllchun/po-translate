@@ -32,10 +32,12 @@ echo %GREEN%Cleanup completed.%NC%
 echo.
 goto :eof
 
-:: Register cleanup on script exit
-set "script_dir=%~dp0"
-set "cleanup_cmd=call :cleanup"
-for /F "tokens=2 delims==" %%a in ('set') do if /I not "%%a"=="%cleanup_cmd%" set "%%a="
+:: Error handling function
+:handle_error
+echo %RED%Error: %~1%NC%
+call :cleanup
+pause
+exit /b 1
 
 echo ======================================
 echo %GREEN%PO File Translation Setup Script%NC%
@@ -56,44 +58,22 @@ if errorlevel 1 (
 
 :: Create virtual environment with error handling
 echo %GREEN%Creating virtual environment...%NC%
-python -m venv venv
-if errorlevel 1 (
-    echo %RED%Error: Failed to create virtual environment. Please check Python installation.%NC%
-    pause
-    exit /b 1
-)
+python -m venv venv || call :handle_error "Failed to create virtual environment. Please check Python installation."
 
 :: Check if venv creation was successful
 if not exist venv (
-    echo %RED%Error: Failed to create virtual environment directory.%NC%
-    pause
-    exit /b 1
+    call :handle_error "Failed to create virtual environment directory."
 )
 
 :: Activate virtual environment and install packages with error handling
 echo %GREEN%Activating virtual environment and installing packages...%NC%
-call venv\Scripts\activate.bat
-if errorlevel 1 (
-    echo %RED%Error: Failed to activate virtual environment.%NC%
-    pause
-    exit /b 1
-)
+call venv\Scripts\activate.bat || call :handle_error "Failed to activate virtual environment."
 
 :: Upgrade pip with error handling
-python -m pip install --upgrade pip
-if errorlevel 1 (
-    echo %RED%Error: Failed to upgrade pip.%NC%
-    pause
-    exit /b 1
-)
+python -m pip install --upgrade pip || call :handle_error "Failed to upgrade pip."
 
 :: Install requirements with error handling
-pip install -r requirements.txt
-if errorlevel 1 (
-    echo %RED%Error: Failed to install requirements.%NC%
-    pause
-    exit /b 1
-)
+pip install -r requirements.txt || call :handle_error "Failed to install requirements."
 
 :: Create .env file if it doesn't exist
 if not exist .env (
@@ -118,55 +98,52 @@ echo ======================================
 echo %GREEN%Setup completed successfully!%NC%
 echo ======================================
 echo.
-echo To start using the translation tool:
-echo.
-echo %GREEN%1. Make sure your source PO files are in the 'source' directory%NC%
-echo %GREEN%2. Update the DEEPSEEK_API_KEY in the .env file%NC%
-echo %GREEN%3. Activate the virtual environment:%NC%
-echo    venv\Scripts\activate.bat
-echo %GREEN%4. Run the translation script:%NC%
-echo    python translate_po.py
-echo.
-echo %GREEN%Translated files will be saved in the 'output' directory%NC%
-echo.
-echo %YELLOW%Note: Virtual environment will be cleaned up when you exit%NC%
-echo ======================================
-echo.
 
-:PROMPT
-echo What would you like to do next?
+:MENU
+echo What would you like to do?
 echo.
 echo %GREEN%[1]%NC% Open source directory to add PO files
 echo %GREEN%[2]%NC% Edit .env file to set API key
-echo %GREEN%[3]%NC% Start translation (will activate venv)
+echo %GREEN%[3]%NC% Start translation
 echo %GREEN%[4]%NC% Exit
 echo.
 set /p choice="Enter your choice (1-4): "
 
 if "%choice%"=="1" (
     start explorer "source"
-    goto PROMPT
+    echo.
+    goto MENU
 )
 if "%choice%"=="2" (
-    notepad .env
-    goto PROMPT
+    start notepad .env
+    echo.
+    goto MENU
 )
 if "%choice%"=="3" (
+    echo %GREEN%Starting translation...%NC%
     call venv\Scripts\activate.bat
     python translate_po.py
+    if errorlevel 1 (
+        echo %RED%Translation failed.%NC%
+    ) else (
+        echo %GREEN%Translation completed successfully.%NC%
+    )
     call :cleanup
-    pause
-    exit /b 0
+    echo.
+    echo Press any key to return to menu...
+    pause >nul
+    goto MENU
 )
 if "%choice%"=="4" (
     echo.
     echo %GREEN%Cleaning up and exiting...%NC%
     call :cleanup
-    pause
+    echo Press any key to exit...
+    pause >nul
     exit /b 0
 )
 
 echo.
 echo %RED%Invalid choice. Please try again.%NC%
 echo.
-goto PROMPT 
+goto MENU 

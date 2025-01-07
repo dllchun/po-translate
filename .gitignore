@@ -15,5 +15,8 @@ __pycache__/
 .vscode/
 .idea/
 
-# Generated files
-*_zh.po 
+# Keep output directory but ignore its contents by default
+output/*
+# Add exceptions here if you want to track specific files in output
+# !output/.gitkeep
+# !output/specific_file.po 
